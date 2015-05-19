@@ -137,11 +137,10 @@ namespace TweakableEverything
 
 						if (prefabNode.id == protoNode.id)
 						{
-							Tools.PostDebugMessage(string.Format(
-								"{0}: Skipping prefab node '{1}', already in protoNodes",
-								this.GetType().Name,
+							this.LogDebug(
+								"Skipping prefab node '{0}', already in protoNodes",
 								prefabNode.id
-							));
+							);
 
 							nodeIsMissing = false;
 							break;
@@ -150,11 +149,10 @@ namespace TweakableEverything
 
 					if (nodeIsMissing)
 					{
-						Tools.PostDebugMessage(string.Format(
-							"{0}: Adding new AttachNodeSnapshot '{1}'",
-							this.GetType().Name,
+						this.LogDebug(
+							"Adding new AttachNodeSnapshot '{0}'",
 							prefabNode.id
-						));
+						);
 						protoNodes.Add(new AttachNodeSnapshot(prefabNode.id + ", -1"));
 					}
 				}

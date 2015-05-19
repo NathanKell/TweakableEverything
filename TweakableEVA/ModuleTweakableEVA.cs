@@ -55,21 +55,21 @@ namespace TweakableEVA
 		{
 			this.thrusterPowerThrottle = 1f;
 
-			Tools.PostDebugMessage(this, "Constructed.");
+			this.LogDebug("Constructed.");
 		}
 
 		public override void OnAwake()
 		{
 			base.OnAwake();
 
-			Tools.PostDebugMessage(this, "Awake.");
+			this.LogDebug("Awake.");
 		}
 
 		public override void OnLoad(ConfigNode node)
 		{
 			base.OnLoad(node);
 
-			Tools.PostDebugMessage(this, "Loaded.");
+			this.LogDebug("Loaded.");
 		}
 
 		public void Update()

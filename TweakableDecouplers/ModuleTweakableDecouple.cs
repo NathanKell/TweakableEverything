@@ -148,7 +148,7 @@ namespace TweakableEverything
 			if (this.decoupleModule == null)
 				return;
 
-			Tools.PostDebugMessage(this, "OnStagingToggle called.");
+			this.LogDebug("OnStagingToggle called.");
 			// Clobber the "staged" field in the decoupler module
 			this.decoupleModule.Fields["staged"].SetValue(arg.Value, this.decoupleModule);
 		}

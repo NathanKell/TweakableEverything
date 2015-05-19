@@ -137,11 +137,18 @@ namespace TweakableEverything
 				// Seed startCompletedState to ensure we run the startCompleted check on the first update
 				this.startCompletedState = !this.startCompleted;
 
+				try
+				{
+					this.direction = (PlayDirection)Enum.Parse(typeof(PlayDirection), this.startDirection);
+				}
+				catch
+				{
+					this.Abort();
+					return;
+				}
+
 				// If we didn't get a module, or we can't parse enums from startPosition or startDirection...
-				if (
-					magToWrap == null ||
-				    !Tools.TryParse(this.startDirection, out this.direction)
-				)
+				if (magToWrap == null)
 				{
 					// ...disable the control and stop processing.
 					this.Abort();

@@ -32,7 +32,7 @@ namespace TweakableEverything
 {
 	public class ModuleStagingToggle : PartModule
 	{
-		private static Tools.DebugLogger log;
+		private static DebugLogger log;
 
 		public static bool stageSortQueued = false;
 
@@ -71,7 +71,7 @@ namespace TweakableEverything
 			#if DEBUG
 			if (log == null)
 			{
-				log = Tools.DebugLogger.New(this);
+				log = DebugLogger.New(this);
 			}
 			#endif
 

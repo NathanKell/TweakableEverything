@@ -91,7 +91,7 @@ namespace TweakableEverything
 		// Runs on start.
 		public override void OnStart(StartState state)
 		{
-			Tools.DebugLogger log = Tools.DebugLogger.New(this);
+			DebugLogger log = DebugLogger.New(this);
 
 			#if DEBUG
 			try {

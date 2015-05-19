@@ -100,7 +100,7 @@ namespace TweakableEverything
 					if (this.startExtended)
 					{
 						// Yay debugging!
-						Tools.PostDebugMessage(this, "Extending ladder.");
+						this.LogDebug("Extending ladder.");
 
 						// ...move the animation to the end with a "forward" play speed.
 						this.ladderAnimation.SkipTo(PlayPosition.End);
@@ -112,7 +112,7 @@ namespace TweakableEverything
 					else
 					{
 						// Yay debugging!
-						Tools.PostDebugMessage(this, "Retracting ladder.");
+						this.LogDebug("Retracting ladder.");
 
 						// ...move the animation to the beginning with a "backward" play speed.
 						this.ladderAnimation.SkipTo(PlayPosition.Beginning);

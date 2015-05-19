@@ -91,7 +91,7 @@ namespace TweakableEverything
 					this.jettisonTransforms[jettisonModule.jettisonName] = jettisonModule.jettisonTransform;
 					this.isJettisonedTable[jettisonModule.jettisonName] = jettisonModule.isJettisoned;
 
-					Tools.PostDebugMessage(this, "Found ModuleJettison:" +
+					this.LogDebug("Found ModuleJettison:" +
 						"\n\tnjettisonName: {0}" +
 						"\n\tjettisonTransform: {1}" +
 						"\n\tisJettisoned: {2}" +
@@ -104,7 +104,7 @@ namespace TweakableEverything
 				}
 			}
 
-			Tools.PostDebugMessage(this, string.Format("Found {0} ModuleJettisons.", this.jettisonModules.Count));
+			this.LogDebug(string.Format("Found {0} ModuleJettisons.", this.jettisonModules.Count));
 
 			// Seed the disableState for first-run behavior.
 			if (this.disableFairing || true)
@@ -118,7 +118,7 @@ namespace TweakableEverything
 			// If the disableFairing toggle has changed...
 			if (this.disableState != this.disableFairing)
 			{
-				Tools.PostDebugMessage(this, "Fairing state switched");
+				this.LogDebug("Fairing state switched");
 
 				// ...re-seed the disableState
 				this.disableState = this.disableFairing;
@@ -147,25 +147,24 @@ namespace TweakableEverything
 						// ...set the module's event visibility
 						jettisonModule.Events["Jettison"].guiActive = !this.disableFairing;
 
-						Tools.PostDebugMessage(this,
-							string.Format("Set transform's gameObject to {0}", !this.disableFairing));
+						this.LogDebug("Set transform's gameObject to {0}", !this.disableFairing);
 
 						// ...and if the fairing is disabled...
 						if (this.disableFairing)
 						{
 							// ...null the jettison module's transform
 							jettisonModule.jettisonTransform = null;
-							Tools.PostDebugMessage(this, "transform set to null.");
+							this.LogDebug("transform set to null.");
 						}
 					// ...otherwise, the fairing is enabled...
 					else
 						{
 							// ...return the jettison module's transform
 							jettisonModule.jettisonTransform = jettisonTransform;
-							Tools.PostDebugMessage(this, "transform reset.");
+							this.LogDebug("transform reset.");
 						}
 
-						Tools.PostDebugMessage(this, "disableFairing: {0}; isJettisoned {1}",
+						this.LogDebug("disableFairing: {0}; isJettisoned {1}",
 							this.disableFairing,
 							jettisonModule.isJettisoned
 						);
@@ -173,7 +172,7 @@ namespace TweakableEverything
 						jettisonModule.isJettisoned = this.disableFairing |
 							this.isJettisonedTable[jettisonModule.jettisonName];
 
-						Tools.PostDebugMessage(this, "setting isJettisoned = {0} for ModuleJettison {1}",
+						this.LogDebug("setting isJettisoned = {0} for ModuleJettison {1}",
 							jettisonModule.isJettisoned,
 							jettisonModule.jettisonName
 						);

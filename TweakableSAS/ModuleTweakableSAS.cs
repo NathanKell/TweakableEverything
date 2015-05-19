@@ -101,7 +101,7 @@ namespace TweakableEverything
 						}
 						catch
 						{
-							Tools.PostErrorMessage(
+							this.LogDebug(
 								"Failed converting {0}.{1} to int.",
 								typeof(AutopilotSkill.Skills).GetType().Name,
 								Enum.GetName(typeof(AutopilotSkill.Skills), apModes.GetValue(idx))
@@ -111,14 +111,14 @@ namespace TweakableEverything
 
 					researchedPartsLoaded = true;
 
-					Tools.PostDebugMessage(this, "Sandbox mode: maxSASServiceLevel = {0}", maxSASServiceLevel);
+					this.LogDebug("Sandbox mode: maxSASServiceLevel = {0}", maxSASServiceLevel);
 
 					return;
 			}
 
-			Tools.PostDebugMessage(this, "Searching for researched parts with SAS modules...");
+			this.LogDebug("Searching for researched parts with SAS modules...");
 
-			var logger = Tools.DebugLogger.New(this);
+			var logger = DebugLogger.New(this);
 
 			AvailablePart part;
 			for (int idx = 0; idx < PartLoader.LoadedPartsList.Count; idx++)
@@ -186,7 +186,7 @@ namespace TweakableEverything
 
 			if (this.sasModule.SASServiceLevel != this.SASServiceLevel)
 			{
-				Tools.PostDebugMessage(this, "Setting ModuleSAS service level to {1} (was {0}).",
+				this.LogDebug("Setting ModuleSAS service level to {1} (was {0}).",
 					this.sasModule.SASServiceLevel, this.SASServiceLevel
 				);
 
@@ -206,7 +206,7 @@ namespace TweakableEverything
 		{
 			if (scene == GameScenes.MAINMENU)
 			{
-				Tools.PostDebugMessage(this, "Main menu loaded; resetting cache.");
+				this.LogDebug("Main menu loaded; resetting cache.");
 
 				researchedPartsLoaded = false;
 				maxSASServiceLevel = 0;
@@ -220,7 +220,7 @@ namespace TweakableEverything
 
 			if (apart.partPrefab.tryGetFirstModuleOfType<ModuleSAS>(out module))
 			{
-				Tools.PostDebugMessage(this, "Purchased new SAS part {0}: SASServiceLevel = {1} (old max = {2}).",
+				this.LogDebug("Purchased new SAS part {0}: SASServiceLevel = {1} (old max = {2}).",
 					apart.title, module.SASServiceLevel, maxSASServiceLevel
 				);
 

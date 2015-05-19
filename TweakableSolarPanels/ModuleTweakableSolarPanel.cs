@@ -93,7 +93,7 @@ namespace TweakableEverything
 				this.sunTrackingState = !this.sunTrackingEnabled;
 
 				// Yay debugging!
-				Tools.PostDebugMessage(this,
+				this.LogDebug(
 					"panelModule: " + this.panelModule,
 					"storedAnimationTime: " + this.panelModule.storedAnimationTime,
 					"storedAnimationSpeed: " + this.panelModule.storedAnimationSpeed,
@@ -109,7 +109,7 @@ namespace TweakableEverything
 				this.panelAnimation = new AnimationWrapper(anim, this.panelModule.animationName, PlayDirection.Forward);
 
 				// Yay debugging!
-				Tools.PostDebugMessage(this,
+				this.LogDebug(
 					"panelAnimation: " + this.panelAnimation
 				);
 
@@ -165,7 +165,7 @@ namespace TweakableEverything
 					if (this.StartOpened)
 					{
 						// Yay debugging!
-						Tools.PostDebugMessage(this, "Extending panel.");
+						this.LogDebug( "Extending panel.");
 
 						// ...move the animation to the end with a "forward" play speed.
 						this.panelAnimation.SkipTo(PlayPosition.End);
@@ -179,7 +179,7 @@ namespace TweakableEverything
 					else
 					{
 						// Yay debugging!
-						Tools.PostDebugMessage(this, "Retracting panel.");
+						this.LogDebug( "Retracting panel.");
 
 						// ...move the animation to the beginning with a "backward" play speed.
 						this.panelAnimation.SkipTo(PlayPosition.Beginning);
